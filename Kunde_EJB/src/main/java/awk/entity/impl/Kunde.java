@@ -1,6 +1,7 @@
 package awk.entity.impl;
 import awk.entity.KundeTO;
 public class Kunde {
+    private long kundenId;
     private String name;
     private String vorname;
     private String gebDatum;
@@ -12,10 +13,10 @@ public class Kunde {
     private String eMail;
     public Kunde() {
     }
-    public Kunde(String name, String vorname, String gebDatum,
+    public Kunde(long kundenId, String name, String vorname, String gebDatum,
                  String strasse, String hausNr, long plz, String ort, String telNr,
                  String eMail) {
-
+        this.kundenId = kundenId;
         this.name = name;
         this.vorname = vorname;
         this.gebDatum = gebDatum;
@@ -28,6 +29,7 @@ public class Kunde {
     }
     public KundeTO toKundeTO() {
         return new KundeTO(
+                this.getKundenId(),
                 this.getName(),
                 this.getVorname(),
                 this.getGebDatum(),
@@ -39,6 +41,15 @@ public class Kunde {
                 this.geteMail());
 
     }
+
+    public long getKundenId() {
+        return kundenId;
+    }
+
+    public void setKundenId(long kundenId) {
+        this.kundenId = kundenId;
+    }
+
     public String getName() {
         return name;
     }
