@@ -2,26 +2,30 @@ package awk.entity.impl;
 
 import awk.entity.TerminTO;
 
+import java.util.List;
+
 public class Termin {
 
     private long terminId;
     private Techniker techniker;
-    private KundeTO kunde;
+    private long kundenId;
     private String datum;
     private String adresse;
-    private Foto foto;
+    private long fotoId;
     private String notizen;
+
+    private List<Long> fotos;
 
     public Termin() {
     }
 
-    public Termin(long terminId, Techniker techniker, KundeTO kunde, String datum, String adresse, Foto foto, String notizen) {
+    public Termin(long terminId, Techniker techniker, long kundenId, String datum, String adresse, long fotoId, String notizen) {
         this.terminId = terminId;
         this.techniker = techniker;
-        this.kunde = kunde;
+        this.kundenId = kundenId;
         this.datum = datum;
         this.adresse = adresse;
-        this.foto = foto;
+        this.fotoId = fotoId;
         this.notizen = notizen;
     }
 
@@ -29,10 +33,10 @@ public class Termin {
         return new TerminTO(
                 this.getTerminId(),
                 this.getTechniker(),
-                this.getKunde(),
+                this.getKundenId(),
                 this.getDatum(),
                 this.getAdresse(),
-                this.getFoto(),
+                this.getFotoId(),
                 this.getNotizen()
         );
     }
@@ -53,12 +57,12 @@ public class Termin {
         this.techniker = techniker;
     }
 
-    public KundeTO getKunde() {
-        return kunde;
+    public long getKundenId() {
+        return kundenId;
     }
 
-    public void setKunde(KundeTO kunde) {
-        this.kunde = kunde;
+    public void setKunde(long kundenId) {
+        this.kundenId = kundenId;
     }
 
     public String getDatum() {
@@ -77,12 +81,12 @@ public class Termin {
         this.adresse = adresse;
     }
 
-    public Foto getFoto() {
-        return foto;
+    public long getFotoId() {
+        return fotoId;
     }
 
-    public void setFoto(Foto foto) {
-        this.foto = foto;
+    public void setFotoId(long fotoId) {
+        this.fotoId = fotoId;
     }
 
     public String getNotizen() {
@@ -91,5 +95,21 @@ public class Termin {
 
     public void setNotizen(String notizen) {
         this.notizen = notizen;
+    }
+
+    public void addFoto(long fId) {
+        this.fotos.add(fId);
+    }
+
+    public void removeFoto(long fId) {
+        this.fotos.remove(fId);
+    }
+
+    public List<Long> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<Long> fotos) {
+        this.fotos = fotos;
     }
 }
