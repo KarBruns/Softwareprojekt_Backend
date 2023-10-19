@@ -10,5 +10,7 @@
   <modules>
     <module>Kunde_EJB</module>
     <module>Termin_EJB</module>
+      <module>User_EJB</module>
+      <module>Softwareprojekt_REST</module>
   </modules>
 </project>
