@@ -12,7 +12,6 @@
 
     <dependencies>
 
-
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
@@ -87,7 +86,7 @@
             <artifactId>Termin_EJB</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-131.173.88.206
+
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>User_EJB</artifactId>

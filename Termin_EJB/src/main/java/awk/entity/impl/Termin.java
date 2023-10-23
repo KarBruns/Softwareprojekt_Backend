@@ -1,42 +1,52 @@
 package awk.entity.impl;
 
 import awk.entity.TerminTO;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "Softwareprojekt_Termin")
 public class Termin {
 
+    @Id
+    @SequenceGenerator(name="Softwareprojekt_Termin_Id", sequenceName="SEQ_Termin_Id", allocationSize = 10)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_Termin_Id")
     private long terminId;
+
+    @ManyToOne
+    @JoinColumn(name = "technikerId")
     private Techniker techniker;
     private long kundenId;
     private String datum;
     private String adresse;
-    private long fotoId;
     private String notizen;
 
+    @ElementCollection
+    @CollectionTable(name = "Softwareprojekt_Termin_Fotos", joinColumns = @JoinColumn(name = "terminId"))
     private List<Long> fotos;
 
     public Termin() {
     }
 
-    public Termin(long terminId, Techniker techniker, long kundenId, String datum, String adresse, long fotoId, String notizen) {
+    public Termin(long terminId, Techniker techniker, long kundenId, String datum, String adresse, String notizen) {
         this.terminId = terminId;
         this.techniker = techniker;
         this.kundenId = kundenId;
         this.datum = datum;
         this.adresse = adresse;
-        this.fotoId = fotoId;
         this.notizen = notizen;
+        this.setFotos(new ArrayList<Long>());
     }
 
     public TerminTO toTerminTO() {
         return new TerminTO(
                 this.getTerminId(),
-                this.getTechniker(),
+                this.getTechniker().toTechnikerTO(),
                 this.getKundenId(),
                 this.getDatum(),
                 this.getAdresse(),
-                this.getFotoId(),
                 this.getNotizen()
         );
     }
@@ -79,14 +89,6 @@ public class Termin {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
-    }
-
-    public long getFotoId() {
-        return fotoId;
-    }
-
-    public void setFotoId(long fotoId) {
-        this.fotoId = fotoId;
     }
 
     public String getNotizen() {

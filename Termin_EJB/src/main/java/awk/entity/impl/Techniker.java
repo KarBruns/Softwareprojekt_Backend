@@ -1,9 +1,15 @@
 package awk.entity.impl;
 
 import awk.entity.TechnikerTO;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "Softwareprojekt_Techniker")
 public class Techniker {
 
+    @Id
+    @SequenceGenerator(name="Softwareprojekt_Techniker_Id", sequenceName="SEQ_Techniker_Id", allocationSize = 100)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_Techniker_Id")
     private long technikerId;
     private String name;
     private String vorName;
