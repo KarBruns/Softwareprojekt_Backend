@@ -1,7 +1,7 @@
 package awk.softwareprojekt.security;
 
-import de.kursverwaltung.jwt.KeyGenerator;
-import de.kursverwaltung.jwt.LogbackLogger;
+import awk.softwareprojekt.jwt.KeyGenerator;
+import awk.softwareprojekt.jwt.LogbackLogger;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.annotation.Priority;
