@@ -6,34 +6,31 @@ import awk.entity.impl.Termin;
 public class TerminTO {
 
     private long terminId;
-    private Techniker techniker;
+    private TechnikerTO techniker;
     private long kundenId;
     private String datum;
     private String adresse;
-    private long fotoId;
     private String notizen;
 
     public TerminTO() {
     }
 
-    public TerminTO(long terminId, Techniker techniker, long kundenId, String datum, String adresse, long fotoId, String notizen) {
+    public TerminTO(long terminId, TechnikerTO techniker, long kundenId, String datum, String adresse, String notizen) {
         this.terminId = terminId;
         this.techniker = techniker;
         this.kundenId = kundenId;
         this.datum = datum;
         this.adresse = adresse;
-        this.fotoId = fotoId;
         this.notizen = notizen;
     }
 
     public Termin toTermin() {
         return new Termin(
                 this.getTerminId(),
-                this.getTechniker(),
+                this.getTechniker().toTechniker(),
                 this.getKundenId(),
                 this.getDatum(),
                 this.getAdresse(),
-                this.getFotoId(),
                 this.getNotizen()
         );
     }
@@ -46,11 +43,11 @@ public class TerminTO {
         this.terminId = terminId;
     }
 
-    public Techniker getTechniker() {
+    public TechnikerTO getTechniker() {
         return techniker;
     }
 
-    public void setTechniker(Techniker techniker) {
+    public void setTechniker(TechnikerTO techniker) {
         this.techniker = techniker;
     }
 
@@ -76,14 +73,6 @@ public class TerminTO {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
-    }
-
-    public long getFotoId() {
-        return fotoId;
-    }
-
-    public void setFotoId(long fotoId) {
-        this.fotoId = fotoId;
     }
 
     public String getNotizen() {

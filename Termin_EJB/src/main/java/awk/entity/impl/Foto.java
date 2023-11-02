@@ -1,9 +1,15 @@
 package awk.entity.impl;
 
 import awk.entity.FotoTO;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "Softwareprojekt_Foto")
 public class Foto {
 
+    @Id
+    @SequenceGenerator(name="Softwareprojekt_Foto_Id", sequenceName="SEQ_Foto_Id", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_Foto_Id")
     private long fotoId;
     private String geoDaten;
     private String dateipfad;
