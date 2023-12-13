@@ -1,7 +1,7 @@
 package awk.security.facade;
 
 
-import de.kursverwaltung.security.entity.User;
+import awk.security.entity.User;
 import jakarta.ejb.Local;
 
 @Local

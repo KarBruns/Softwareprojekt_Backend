@@ -11,7 +11,7 @@ import jakarta.ws.rs.core.Application;
 @BasicAuthenticationMechanismDefinition()
 @DatabaseIdentityStoreDefinition(
 
-		dataSourceLookup = "app/OracleDS",
+		dataSourceLookup = "app/Postgres",
         callerQuery = "select PASSWORD from User where USERNAME=?",
         groupsQuery = "select ROLENAME as GROUPNAME from User_Roles where USERNAME=?",
         hashAlgorithm = PlainSHA512PasswordHash.class

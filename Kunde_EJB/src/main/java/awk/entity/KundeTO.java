@@ -1,6 +1,12 @@
 package awk.entity;
 import awk.entity.impl.Kunde;
-public class KundeTO {
+
+import java.io.Serializable;
+
+public class KundeTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private long kundenId;
     private String name;
     private String vorname;

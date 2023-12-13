@@ -1,6 +1,18 @@
 package awk.entity.impl;
 import awk.entity.KundeTO;
-public class Kunde {
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name = "Softwareprojekt_Kunde")
+public class Kunde implements Serializable {
+
+    private static final long serialVersionUID = 8647111572833281082L;
+
+    @Id
+    @SequenceGenerator(name="Softwareprojekt_Kunde_Id", sequenceName="SEQ_Kunde_Id", allocationSize = 10)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_Kunde_Id")
     private long kundenId;
     private String name;
     private String vorname;

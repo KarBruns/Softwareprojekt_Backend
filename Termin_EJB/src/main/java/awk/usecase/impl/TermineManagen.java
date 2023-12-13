@@ -5,11 +5,13 @@ import awk.entity.TerminTO;
 import awk.entity.impl.Termin;
 import awk.usecase.ITermineManagen;
 import com.sun.xml.xsom.impl.Ref;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Stateless
 public class TermineManagen implements ITermineManagen {
 
     @Inject

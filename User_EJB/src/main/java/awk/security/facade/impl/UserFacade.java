@@ -1,9 +1,8 @@
 package awk.security.facade.impl;
 
-
-import de.kursverwaltung.security.dao.UserDAO;
-import de.kursverwaltung.security.entity.User;
-import de.kursverwaltung.security.facade.IUserFacade;
+import awk.security.dao.UserDAO;
+import awk.security.entity.User;
+import awk.security.facade.IUserFacade;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 

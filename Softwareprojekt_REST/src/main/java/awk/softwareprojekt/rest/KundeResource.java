@@ -20,6 +20,7 @@ import java.util.Collection;
 @Consumes((MediaType.APPLICATION_JSON))
 public class KundeResource {
 
+
     @Inject
     IKundenManagen kundenManagen;
 
