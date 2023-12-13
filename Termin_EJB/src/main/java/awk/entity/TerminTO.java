@@ -3,7 +3,11 @@ package awk.entity;
 import awk.entity.impl.Techniker;
 import awk.entity.impl.Termin;
 
-public class TerminTO {
+import java.io.Serializable;
+
+public class TerminTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private long terminId;
     private TechnikerTO techniker;

@@ -1,6 +1,6 @@
 package awk.security.dao;
 
-import de.kursverwaltung.security.entity.User;
+import awk.security.entity.User;
 import jakarta.ejb.Stateless;
 
 import java.util.HashMap;

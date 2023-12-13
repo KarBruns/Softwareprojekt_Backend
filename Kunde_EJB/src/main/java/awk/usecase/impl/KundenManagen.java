@@ -4,11 +4,13 @@ import awk.dao.KundeDAO;
 import awk.entity.KundeTO;
 import awk.entity.impl.Kunde;
 import awk.usecase.IKundenManagen;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Stateless
 public class KundenManagen implements IKundenManagen {
 
     @Inject

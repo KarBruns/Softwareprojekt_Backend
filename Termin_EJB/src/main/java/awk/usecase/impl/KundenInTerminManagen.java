@@ -7,12 +7,14 @@ import awk.entity.TerminTO;
 import awk.entity.impl.Termin;
 import awk.usecase.IKundenInTerminManagen;
 import awk.usecase.IKundenManagen;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Stateless
 public class KundenInTerminManagen implements IKundenInTerminManagen {
 
     @Inject

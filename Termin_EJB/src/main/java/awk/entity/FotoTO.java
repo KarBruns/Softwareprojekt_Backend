@@ -2,7 +2,11 @@ package awk.entity;
 
 import awk.entity.impl.Foto;
 
-public class FotoTO {
+import java.io.Serializable;
+
+public class FotoTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private long fotoId;
     private String geoDaten;
@@ -19,7 +23,7 @@ public class FotoTO {
 
     public Foto toFoto() {
         return new Foto(
-                this.getFotoId,
+                this.getFotoId(),
                 this.getGeoDaten(),
                 this.getDateipfad()
         );

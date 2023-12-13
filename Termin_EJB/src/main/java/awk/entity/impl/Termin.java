@@ -3,12 +3,15 @@ package awk.entity.impl;
 import awk.entity.TerminTO;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "Softwareprojekt_Termin")
-public class Termin {
+public class Termin implements Serializable {
+
+    private static final long serialVersionUID = -8403978423917160557L;
 
     @Id
     @SequenceGenerator(name="Softwareprojekt_Termin_Id", sequenceName="SEQ_Termin_Id", allocationSize = 10)

@@ -3,9 +3,13 @@ package awk.entity.impl;
 import awk.entity.FotoTO;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "Softwareprojekt_Foto")
-public class Foto {
+public class Foto implements Serializable {
+
+    private static final long serialVersionUID = -779999960244416576L;
 
     @Id
     @SequenceGenerator(name="Softwareprojekt_Foto_Id", sequenceName="SEQ_Foto_Id", allocationSize = 1)

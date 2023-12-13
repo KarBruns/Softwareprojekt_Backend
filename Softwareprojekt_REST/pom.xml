@@ -6,6 +6,7 @@
         <artifactId>Softwareprojekt_Backend</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <packaging>war</packaging>
     <artifactId>Softwareprojekt_REST</artifactId>
     <name>Archetype - Softwareprojekt_REST</name>
     <url>http://maven.apache.org</url>
@@ -87,8 +88,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>${javase.version}</source>
-                    <target>${javase.version}</target>
+                    <source>8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
 

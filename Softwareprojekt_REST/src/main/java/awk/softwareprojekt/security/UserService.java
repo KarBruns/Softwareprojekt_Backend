@@ -1,9 +1,9 @@
 package awk.softwareprojekt.security;
 
-import de.kursverwaltung.jwt.KeyGenerator;
-import de.kursverwaltung.jwt.LogbackLogger;
-import de.kursverwaltung.security.entity.User;
-import de.kursverwaltung.security.facade.IUserFacade;
+import awk.security.entity.User;
+import awk.security.facade.IUserFacade;
+import awk.softwareprojekt.jwt.KeyGenerator;
+import awk.softwareprojekt.jwt.LogbackLogger;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.inject.Inject;

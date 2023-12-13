@@ -2,7 +2,11 @@ package awk.entity;
 
 import awk.entity.impl.Techniker;
 
-public class TechnikerTO {
+import java.io.Serializable;
+
+public class TechnikerTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private long technikerId;
     private String name;
