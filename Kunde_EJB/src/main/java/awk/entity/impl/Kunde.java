@@ -1,18 +1,21 @@
 package awk.entity.impl;
-import awk.entity.KundeTO;
-import jakarta.persistence.*;
 
 import java.io.Serializable;
 
+import awk.entity.KundeTO;
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "Softwareprojekt_Kunde")
-public class Kunde implements Serializable {
+public class Kunde implements Serializable{
 
-    private static final long serialVersionUID = 8647111572833281082L;
+    private static final long serialVersionUID = 4076877880099313832L;
+
+
 
     @Id
-    @SequenceGenerator(name="Softwareprojekt_Kunde_Id", sequenceName="SEQ_Kunde_Id", allocationSize = 10)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_Kunde_Id")
+    @SequenceGenerator(name="SP_Kunde_Id", sequenceName="SEQ_Kunde_Id", allocationSize = 10)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SP_Kunde_Id")
     private long kundenId;
     private String name;
     private String vorname;
@@ -118,4 +121,5 @@ public class Kunde implements Serializable {
     public void seteMail(String eMail) {
         this.eMail = eMail;
     }
+
 }
