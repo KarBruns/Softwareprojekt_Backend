@@ -9,11 +9,11 @@ import jakarta.persistence.*;
 @Table(name = "Softwareprojekt_Kunde")
 public class Kunde implements Serializable{
 
-    private static final long serialVersionUID = 4076877880099313832L;
+	private static final long serialVersionUID = 4076877880099313832L;
 
+	
 
-
-    @Id
+	@Id
     @SequenceGenerator(name="SP_Kunde_Id", sequenceName="SEQ_Kunde_Id", allocationSize = 10)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SP_Kunde_Id")
     private long kundenId;
@@ -121,5 +121,5 @@ public class Kunde implements Serializable{
     public void seteMail(String eMail) {
         this.eMail = eMail;
     }
-
+    
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+
 public abstract class GenericDAO<T> {
 
 	private final String UNIT_NAME = "Kunde_DS";
@@ -64,6 +65,7 @@ public abstract class GenericDAO<T> {
 		return em.createQuery(cq).getResultList();
 	}
 	
+
 	@SuppressWarnings("unchecked")
 	protected T findOneResult (String namedQuery, Map<String, Object> parameters){
 		T result = null;
