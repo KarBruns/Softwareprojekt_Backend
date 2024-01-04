@@ -1,12 +1,20 @@
 package awk.softwareprojekt.rest;
 
 
-import awk.entity.FotoTO;
-import awk.entity.KundeTO;
-import awk.entity.TerminTO;
+import de.kunde.awk.entity.KundeTO;
+import de.kunde.awk.usecase.IKundenManagen;
+import de.termin.awk.entity.FotoTO;
+import de.termin.awk.entity.TechnikerTO;
+import de.termin.awk.entity.TerminTO;
+import de.termin.awk.usecase.IFotosInTerminManagen;
+import de.termin.awk.usecase.IFotosManagen;
+import de.termin.awk.usecase.IKundenInTerminManagen;
+import de.termin.awk.usecase.ITechnikerManagen;
+import de.termin.awk.usecase.ITermineManagen;
+import awk.softwareprojekt.jwt.LogbackLogger;
 import awk.softwareprojekt.security.JWTTokenNeeded;
 import awk.softwareprojekt.security.Role;
-import awk.usecase.*;
+import de.termin.awk.usecase.*;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -16,6 +24,7 @@ import jakarta.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Path("termin")
 @Stateless
@@ -37,12 +46,23 @@ public class TerminResource {
 
     @Inject
     IKundenInTerminManagen kundenInTerminManagen;
+    
+    @Inject
+    ITechnikerManagen technikerManagen;
+    
+    
+	@Inject
+	@LogbackLogger
+	private transient Logger logger;
 
 
     @POST
     @Path("createTermin")
     @JWTTokenNeeded(Permissions = Role.ADMIN)
     public Response createTermin(TerminTO tTO) {
+    	
+//    	logger.info("###Mooooin### ID: "+tTO.getTechnikerId());
+    	
         if (termineManagen.createTermin(tTO)) {
             return Response.ok().build();
         } else {
@@ -60,11 +80,34 @@ public class TerminResource {
             return Response.status(404, "Fehler beim Loeschen von Termin").build();
         }
     }
+    
+    
+    @POST
+    @Path("uploadFoto")
+    @JWTTokenNeeded(Permissions = Role.ADMIN)
+    public Response uploadFoto(FotoTO fTO) {
+    	
+    	long fID = fotosManagen.createFoto(fTO);
+    	
+    	logger.info("###Foto### ID: "+fID);
+    	
+        if (fID != 0) {
+            return Response.ok(fID).build();
+        } else {
+            return Response.status(404, "Fehler beim Anlegen vom Termin").build();
+        }
+    }
 
     @GET
     @Path("getAllTermine")
     public Collection<TerminTO> getAllTermine() {
         return termineManagen.getAllTermine();
+    }
+    
+    @GET
+    @Path("getAllTechniker")
+    public Collection<TechnikerTO> getAllTechniker() {
+        return technikerManagen.getAllTechniker();
     }
 
 
@@ -139,7 +182,17 @@ public class TerminResource {
     @GET
     @Path("getTermineOfKunde/{kId}")
     public Collection<TerminTO> getTermineOfKunde(@PathParam("kId") long kId) {
-
         return kundenInTerminManagen.getTermineOfKunde(kId);
+    }
+    
+    @POST
+    @Path("updateTermin")
+    @JWTTokenNeeded(Permissions = Role.ADMIN)
+    public Response updateTermin(TerminTO tTO) {
+        if (termineManagen.updateTermin(tTO)) {
+            return Response.ok().build();
+        } else {
+            return Response.status(404, "Fehler beim Bearbeiten von Termin").build();
+        }
     }
 }

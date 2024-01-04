@@ -1,10 +1,10 @@
 package awk.softwareprojekt.rest;
 
 
-import awk.entity.KundeTO;
+import de.kunde.awk.entity.KundeTO;
 import awk.softwareprojekt.security.JWTTokenNeeded;
 import awk.softwareprojekt.security.Role;
-import awk.usecase.IKundenManagen;
+import de.kunde.awk.usecase.IKundenManagen;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;

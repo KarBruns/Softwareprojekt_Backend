@@ -1,9 +1,9 @@
 package awk.softwareprojekt.security;
 
-import awk.security.entity.User;
-import awk.security.facade.IUserFacade;
 import awk.softwareprojekt.jwt.KeyGenerator;
 import awk.softwareprojekt.jwt.LogbackLogger;
+import de.user.awk.entity.User;
+import de.user.awk.facade.IUserFacade;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.inject.Inject;
@@ -42,70 +42,7 @@ public class UserService {
 	@LogbackLogger
     private Logger logger;
 	
-    
-    /* 	Testen des REST-Services in Konsole mit:
-		curl -i -X POST 'http://localhost:8080/Bank_REST_V3/api/users/login1?username=chef&password=chef'
-     */
-    
-	@POST
-	@Path("/login1")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Response authenticateUser(
-				@QueryParam("username") String username,
-				@QueryParam("password") String password
-				) {
-		System.out.println("login called with login: "+username+" password: "+password);
-		User user = null;
-		try {
-			user = authenticate(username, password);
-		
-		} catch (Exception e) {
-			return Response.status(UNAUTHORIZED).build();
-		}
-		String token = issueToken(user);
-		logger.info("### token ="+token);
-		return Response.ok().header(AUTHORIZATION, "Bearer " +token).build();
-		
-	}
 	
-	/*
-	curl -X POST http://localhost:8080/bankREST_v2-1.0/api/users/login2 \
-		-H 'Accept: application/json' \
-		-H 'Content-Type: application/json' \
-		-H 'username: chef' \
-		-H 'password: chef'
-	*/
-	
-	@POST
-	@Path("/login2")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response authenticateUser2(
-			@HeaderParam("username") String username, 
-			@HeaderParam("password") String password) {
-		System.out.println("login called with login: "+username+" password: "+password);
-		User user = null;
-		try {
-			user = authenticate(username, password);
-		
-		} catch (Exception e) {
-			return Response.status(UNAUTHORIZED).build();
-		}
-		String token = issueToken(user);
-		logger.info("### token ="+token);
-		return Response.ok().header(AUTHORIZATION, "Bearer " +token).build();
-		
-	}
-	
-	
-	/* Username und Password im Body des request --> sicherste Methode, da body idR ssl-Verschlüsselt
-	 * 
-	 * curl -X POST http://localhost:8080/bankREST_v2-1.0/api/users/login3 \
-		-H 'Accept: application/json' \
-		-H 'Content-Type: application/json' \
-		-d '{"username": "chef", "password": "chef"}'
-	 */
 	@POST
 	@Path("/login3")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -147,7 +84,6 @@ public class UserService {
 					+ hashAlgo.generate(password.toCharArray()));
 			throw new SecurityException("Falscher Benutzername/Kennwort");
 		}
-		
 	}
 	
 	
