@@ -7,7 +7,7 @@
   </parent>
   <artifactId>Kunde_EJB</artifactId>
   
-  <packaging>jar</packaging>
+  	<packaging>jar</packaging>
 
 
 	<properties>
@@ -102,6 +102,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
