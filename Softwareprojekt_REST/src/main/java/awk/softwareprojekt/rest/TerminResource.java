@@ -3,9 +3,13 @@ package awk.softwareprojekt.rest;
 
 import de.kunde.awk.entity.KundeTO;
 import de.kunde.awk.usecase.IKundenManagen;
+import de.termin.awk.dao.FotoDAO;
+import de.termin.awk.dao.TerminDAO;
 import de.termin.awk.entity.FotoTO;
 import de.termin.awk.entity.TechnikerTO;
 import de.termin.awk.entity.TerminTO;
+import de.termin.awk.entity.impl.Foto;
+import de.termin.awk.entity.impl.Termin;
 import de.termin.awk.usecase.IFotosInTerminManagen;
 import de.termin.awk.usecase.IFotosManagen;
 import de.termin.awk.usecase.IKundenInTerminManagen;
@@ -61,14 +65,13 @@ public class TerminResource {
     @JWTTokenNeeded(Permissions = Role.ADMIN)
     public Response createTermin(TerminTO tTO) {
     	
-//    	logger.info("###Mooooin### ID: "+tTO.getTechnikerId());
-    	
         if (termineManagen.createTermin(tTO)) {
             return Response.ok().build();
         } else {
             return Response.status(404, "Fehler beim Anlegen vom Termin").build();
         }
     }
+    
 
     @POST
     @Path("deleteTermin/{id}")
@@ -83,18 +86,31 @@ public class TerminResource {
     
     
     @POST
+    @Path("deleteFoto/{id}")
+    public Response deleteFoto(@PathParam("id") long id) {
+        if (fotosManagen.deleteFoto(id)) {
+            return Response.ok().build();
+        } else {
+            return Response.status(404, "Fehler beim Loeschen von Foto").build();
+        }
+    }
+    
+    
+    @POST
     @Path("uploadFoto")
     @JWTTokenNeeded(Permissions = Role.ADMIN)
-    public Response uploadFoto(FotoTO fTO) {
+    public Response uploadFoto(String dateiURL) {
     	
-    	long fID = fotosManagen.createFoto(fTO);
+    	logger.info("###Moin### ID: "+dateiURL.getClass());
+    	
+    	long fID = fotosManagen.createFoto(dateiURL);
     	
     	logger.info("###Foto### ID: "+fID);
     	
         if (fID != 0) {
             return Response.ok(fID).build();
         } else {
-            return Response.status(404, "Fehler beim Anlegen vom Termin").build();
+            return Response.status(404, "Fehler beim Anlegen vom Foto").build();
         }
     }
 
@@ -133,14 +149,9 @@ public class TerminResource {
 
     @GET
     @Path("getAllFotosOfTermin/{tId}")
-    public Collection<FotoTO> getAllFotosOfTermin(@PathParam("tId") long tId) {
-
-        List<Long> ids = fotosInTerminManagen.getAllFotosOfTermin(tId);
-        Collection<FotoTO> fotos = new ArrayList<>();
-        for(long id : ids) {
-            fotos.add(fotosManagen.findFoto(id));
-        }
-        return fotos;
+    public List<String> getAllFotosOfTermin(@PathParam("tId") long tId) {
+    	
+        return fotosInTerminManagen.getAllFotosOfTermin(tId);
     }
 
     @GET

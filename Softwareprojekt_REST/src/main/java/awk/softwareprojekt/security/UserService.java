@@ -44,7 +44,7 @@ public class UserService {
 	
 	
 	@POST
-	@Path("/login3")
+	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response authenticateUser3(Credentials credential) {

@@ -16,18 +16,18 @@ public class Foto implements Serializable {
     @SequenceGenerator(name="SP_Foto_Id", sequenceName="SEQ_Foto_Id", allocationSize = 1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SP_Foto_Id")
     private long fotoId;
-    private long latitude;
-    private long longitude;
-    private String dateiURL;
+    private double latitude;
+    private double longitude;
+    private String dateipfad;
 
     public Foto() {
     }
 
-    public Foto(long fotoId, long latitude, long longitude, String dateiURL) {
+    public Foto(long fotoId, double latitude, double longitude, String dateipfad) {
         this.fotoId = fotoId;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.dateiURL = dateiURL;
+        this.dateipfad = dateipfad;
     }
 
     public FotoTO toFotoTO() {
@@ -35,7 +35,7 @@ public class Foto implements Serializable {
                 this.getFotoId(),
                 this.getLatitude(),
                 this.getLongitude(),
-                this.getDateiURL()
+                this.getDateipfad()
         );
     }
 
@@ -47,30 +47,28 @@ public class Foto implements Serializable {
 		this.fotoId = fotoId;
 	}
 
-	public long getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
-	public long getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(long longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
-	public String getDateiURL() {
-		return dateiURL;
+	public String getDateipfad() {
+		return dateipfad;
 	}
 
-	public void setDateiURL(String dateiURL) {
-		this.dateiURL = dateiURL;
+	public void setDateipfad(String dateiURL) {
+		this.dateipfad = dateiURL;
 	}
-
-    
-    
+   
 }

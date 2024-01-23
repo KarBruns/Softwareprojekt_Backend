@@ -110,7 +110,7 @@ public class Termin implements Serializable {
     }
 
     public List<Long> getFotos() {
-        return fotos;
+        return this.fotos;
     }
 
     public void setFotos(List<Long> fotos) {

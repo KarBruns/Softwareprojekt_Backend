@@ -1,16 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.example</groupId>
-  <artifactId>Softwareprojekt_Backend</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>Archetype - Softwareprojekt_Backend</name>
-  <url>http://maven.apache.org</url>
-  <modules>
-    <module>Kunde_EJB</module>
-    <module>Termin_EJB</module>
-      <module>User_EJB</module>
-      <module>Softwareprojekt_REST</module>
-  </modules>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.glasfaser</groupId>
+	<artifactId>Softwareprojekt_Backend</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>Kunde_EJB</module>
+		<module>Termin_EJB</module>
+		<module>User_EJB</module>
+		<module>Softwareprojekt_REST</module>
+	</modules>
 </project>
